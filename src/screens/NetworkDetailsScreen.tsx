@@ -1,7 +1,7 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useEffect, useState } from "react";
-import { ScrollView, View } from "react-native";
-import { Button, Chip, Snackbar, Text } from "react-native-paper";
+import { Modal, ScrollView, View } from "react-native";
+import { Button, Chip, Snackbar, Text, TextInput } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppHeader } from "@/src/components/AppHeader";
 import {
@@ -10,7 +10,7 @@ import {
   getSecurityLabel,
   getSecurityWarning,
 } from "@/src/services/wifiRules";
-import { findWifiNetwork } from "@/src/services/wifiService";
+import { connectToWifiNetwork, findWifiNetwork } from "@/src/services/wifiService";
 import {
   isFavoriteNetwork,
   removeFavoriteNetwork,
@@ -24,6 +24,9 @@ export default function NetworkDetailsScreen() {
   const [network, setNetwork] = useState<WifiNetwork | null>(null);
   const [snackVisible, setSnackVisible] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
+  const [passwordModalVisible, setPasswordModalVisible] = useState(false);
+  const [wifiPassword, setWifiPassword] = useState("");
+  const [connecting, setConnecting] = useState(false);
 
   useEffect(() => {
     async function loadNetwork() {
@@ -53,6 +56,43 @@ export default function NetworkDetailsScreen() {
     }
 
     setSnackVisible(true);
+  }
+
+  async function requestConnection(password?: string) {
+    if (!network) return;
+
+    setConnecting(true);
+
+    try {
+      await connectToWifiNetwork(network, password);
+      setPasswordModalVisible(false);
+      setWifiPassword("");
+      setSnackMessage("Pedido de conexao enviado. Confirme na janela do Android.");
+    } catch (error) {
+      setSnackMessage(
+        error instanceof Error ? error.message : "Nao foi possivel conectar nessa rede.",
+      );
+    } finally {
+      setConnecting(false);
+      setSnackVisible(true);
+    }
+  }
+
+  function handleConnectPress() {
+    if (!network) return;
+
+    if (network.securityType === "WEP") {
+      setSnackMessage("Redes WEP usam protecao antiga e nao sao suportadas para conexao pelo app.");
+      setSnackVisible(true);
+      return;
+    }
+
+    if (network.securityType === "OPEN") {
+      requestConnection();
+      return;
+    }
+
+    setPasswordModalVisible(true);
   }
 
   if (!network) {
@@ -130,6 +170,17 @@ export default function NetworkDetailsScreen() {
         </View>
 
         <Button
+          mode="contained"
+          icon="wifi"
+          loading={connecting}
+          disabled={connecting}
+          onPress={handleConnectPress}
+          style={{ borderRadius: 8, backgroundColor: "#15803d" }}
+        >
+          Conectar pelo app
+        </Button>
+
+        <Button
           mode={network.isFavorite ? "outlined" : "contained"}
           icon={network.isFavorite ? "star-off" : "star"}
           onPress={handleToggleFavorite}
@@ -143,6 +194,66 @@ export default function NetworkDetailsScreen() {
           Voltar
         </Button>
       </ScrollView>
+
+      <Modal
+        visible={passwordModalVisible}
+        transparent
+        animationType="fade"
+        onRequestClose={() => setPasswordModalVisible(false)}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(15, 23, 42, 0.45)",
+            justifyContent: "center",
+            padding: 20,
+          }}
+        >
+          <View
+            style={{
+              backgroundColor: "#ffffff",
+              borderRadius: 8,
+              padding: 18,
+              gap: 12,
+            }}
+          >
+            <Text style={{ fontSize: 18, fontWeight: "bold", color: "#1f2937" }}>
+              Senha da rede
+            </Text>
+            <Text style={{ color: "#64748b", lineHeight: 20 }}>
+              Informe a senha de {network.ssid}. Depois o Android vai pedir a confirmacao da conexao.
+            </Text>
+            <TextInput
+              label="Senha do Wi-Fi"
+              value={wifiPassword}
+              onChangeText={setWifiPassword}
+              mode="outlined"
+              secureTextEntry
+              autoCapitalize="none"
+              autoCorrect={false}
+            />
+            <View style={{ flexDirection: "row", gap: 10 }}>
+              <Button
+                mode="outlined"
+                onPress={() => setPasswordModalVisible(false)}
+                style={{ flex: 1, borderRadius: 8 }}
+                disabled={connecting}
+              >
+                Cancelar
+              </Button>
+              <Button
+                mode="contained"
+                onPress={() => requestConnection(wifiPassword)}
+                style={{ flex: 1, borderRadius: 8, backgroundColor: "#15803d" }}
+                loading={connecting}
+                disabled={connecting || wifiPassword.length < 8}
+              >
+                Conectar
+              </Button>
+            </View>
+          </View>
+        </View>
+      </Modal>
 
       <Snackbar
         visible={snackVisible}

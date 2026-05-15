@@ -111,3 +111,21 @@ export async function findWifiNetwork(bssid: string) {
   const networks = await scanWifiNetworks();
   return networks.find((network) => network.bssid === bssid) ?? null;
 }
+
+export async function connectToWifiNetwork(network: WifiNetwork, password?: string) {
+  if (Platform.OS !== "android") {
+    throw new Error("Conexao Wi-Fi pelo app esta disponivel apenas no Android.");
+  }
+
+  const nativeScanner = NativeModules.WifiScanner;
+
+  if (!nativeScanner?.connectToNetwork) {
+    throw new Error("Modulo nativo de conexao Wi-Fi nao esta disponivel. Rode o app pelo Android nativo.");
+  }
+
+  return nativeScanner.connectToNetwork(
+    network.ssid,
+    network.securityType,
+    password ?? "",
+  ) as Promise<string>;
+}
