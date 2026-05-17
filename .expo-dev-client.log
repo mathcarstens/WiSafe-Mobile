@@ -1,9 +1,25 @@
 
 > matheus123@1.0.0 start
-> expo start --dev-client --host localhost --port 8081
+> expo start --dev-client --host localhost --port 8081 --clear
 
 Starting project at C:\Users\quele\Documents\Mobile\Projeto-Final-Mobile
 React Compiler enabled
 Starting Metro Bundler
+warning: Bundler cache is empty, rebuilding (this may take a minute)
 Waiting on http://localhost:8081
 Logs for your project will appear below.
+Android node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Android node_modules\expo-router\entry.js ▓▓▓▓░░░░░░░░░░░░ 26.4% (198/385)
+Android node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 77.9% (820/968)
+Android Bundled 10295ms node_modules\expo-router\entry.js (1363 modules)
+Android node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Android Bundled 46ms node_modules\expo-router\entry.js (1 module)
+Android node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Android Bundled 55ms node_modules\expo-router\entry.js (1 module)
+Android node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Android Bundled 74ms node_modules\expo-router\entry.js (1 module)
+Android Bundled 42ms node_modules\expo-router\entry.js (1 module)
+Android node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Android Bundled 50ms node_modules\expo-router\entry.js (1 module)
+Android node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
+Android Bundled 43ms node_modules\expo-router\entry.js (1 module)

@@ -1,8 +1,16 @@
+import * as SplashScreen from "expo-splash-screen";
 import { Stack } from "expo-router";
+import { useEffect } from "react";
 import { PaperProvider } from "react-native-paper";
 import CustomLightTheme from "../theme";
 
 export default function RootLayout() {
+  useEffect(() => {
+    SplashScreen.hideAsync().catch(() => {
+      console.log("Splash ja estava oculta ou nao conseguiu ser ocultada.");
+    });
+  }, []);
+
   return (
     <PaperProvider theme={CustomLightTheme}>
       <Stack>
