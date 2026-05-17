@@ -7,13 +7,3 @@ React Compiler enabled
 Starting Metro Bundler
 Waiting on http://localhost:8081
 Logs for your project will appear below.
-Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
-Web node_modules\expo-router\entry.js ░░░░░░░░░░░░░░░░  0.0% (0/1)
-λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓░░░░░░░░ 54.2% (365/496)
-Web node_modules\expo-router\entry.js ▓▓▓▓▓▓▓▓░░░░░░░░ 52.6% (475/661)
-λ node_modules\expo-router\node\render.js ▓▓▓▓▓▓▓▓▓▓▓▓░░░░ 80.0% (820/917)
-λ Bundled 8893ms node_modules\expo-router\node\render.js (1024 modules)
-Web Bundled 10243ms node_modules\expo-router\entry.js (1042 modules)
-Web node_modules\expo-router\entry.js ▓░░░░░░░░░░░░░░░ 10.0% ( 59/187)
-Web Bundled 2643ms node_modules\expo-router\entry.js (1043 modules)
- LOG  [web] Logs will appear in the browser console
