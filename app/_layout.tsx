@@ -6,9 +6,16 @@ import CustomLightTheme from "../theme";
 
 export default function RootLayout() {
   useEffect(() => {
-    SplashScreen.hideAsync().catch(() => {
-      console.log("Splash ja estava oculta ou nao conseguiu ser ocultada.");
-    });
+    const hideSplash = () => {
+      SplashScreen.hideAsync().catch(() => {
+        console.log("Splash ja estava oculta ou nao conseguiu ser ocultada.");
+      });
+    };
+
+    hideSplash();
+    const timer = setTimeout(hideSplash, 800);
+
+    return () => clearTimeout(timer);
   }, []);
 
   return (
