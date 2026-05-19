@@ -1,3 +1,4 @@
+import { saveStoredUser } from "@/src/storage/userStorage";
 import { useRouter } from "expo-router";
 import { useState } from "react";
 import { View } from "react-native";
@@ -16,7 +17,7 @@ export default function Registro() {
   const [visible, setVisible] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
 
-  function handleRegistrar() {
+  async function handleRegistrar() {
     if (!nome || !email || !telefone || !senha || !confirmarSenha) {
       setSnackMessage("Preencha todos os campos!");
       setVisible(true);
@@ -31,6 +32,12 @@ export default function Registro() {
 
     setSnackMessage("Cadastro realizado com sucesso!");
     setVisible(true);
+    await saveStoredUser({
+      nome: nome.trim(),
+      email: email.trim(),
+      telefone: telefone.trim(),
+      rememberMe: true,
+    });
     console.log("Registrando usuário:", { nome, email, telefone });
 
     // Voltar para a tela inicial após 2.5 segundos

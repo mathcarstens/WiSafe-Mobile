@@ -107,17 +107,29 @@ export default function NetworksScreen() {
           disabled={loading}
           onPress={loadNetworks}
           style={{ flex: 1, borderRadius: 8, backgroundColor: "#1a3a6b" }}
+          labelStyle={{ fontSize: 12 }}
         >
-          Escanear novamente
+          Escanear
         </Button>
         <Button
           mode="outlined"
           icon="star"
           onPress={() => router.push("/favorites")}
-          style={{ borderRadius: 8 }}
+          style={{ flex: 1, borderRadius: 8 }}
+          labelStyle={{ fontSize: 12 }}
           textColor="#1a3a6b"
         >
           Favoritos
+        </Button>
+        <Button
+          mode="outlined"
+          icon="account"
+          onPress={() => router.push("/account")}
+          style={{ flex: 1, borderRadius: 8 }}
+          labelStyle={{ fontSize: 12 }}
+          textColor="#1a3a6b"
+        >
+          Conta
         </Button>
       </View>
 

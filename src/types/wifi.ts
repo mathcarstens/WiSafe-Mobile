@@ -17,6 +17,8 @@ export type WifiNetwork = {
 };
 
 export type StoredUser = {
+  nome?: string;
   email: string;
+  telefone?: string;
   rememberMe: boolean;
 };

@@ -28,6 +28,7 @@ export default function RootLayout() {
         <Stack.Screen name="home" options={{ headerShown: false }} />
         <Stack.Screen name="network-details" options={{ headerShown: false }} />
         <Stack.Screen name="favorites" options={{ headerShown: false }} />
+        <Stack.Screen name="account" options={{ headerShown: false }} />
       </Stack>
     </PaperProvider>
   );

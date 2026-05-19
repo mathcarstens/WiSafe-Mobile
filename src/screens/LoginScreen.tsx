@@ -32,7 +32,12 @@ export default function LoginScreen() {
     }
 
     if (lembrar) {
-      await saveStoredUser({ email: email.trim(), rememberMe: true });
+      const storedUser = await getStoredUser();
+      await saveStoredUser({
+        ...(storedUser ?? {}),
+        email: email.trim(),
+        rememberMe: true,
+      });
     }
 
     router.replace("/home");
