@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "matheus123",
-    "slug": "matheus123",
+    "name": "Wifi Protect",
+    "slug": "Wifi Protect",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/wifi-protect.jpeg",
     "scheme": "matheus123",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,

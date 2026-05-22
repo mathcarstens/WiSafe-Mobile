@@ -5,10 +5,7 @@ import { Button, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppHeader } from "@/src/components/AppHeader";
 import { NetworkCard } from "@/src/components/NetworkCard";
-import {
-  getFavoriteNetworks,
-  toggleFavoriteNetwork,
-} from "@/src/storage/favoritesStorage";
+import { getFavoriteNetworks, toggleFavoriteNetwork, } from "@/src/storage/favoritesStorage";
 import { WifiNetwork } from "@/src/types/wifi";
 
 export default function FavoritesScreen() {

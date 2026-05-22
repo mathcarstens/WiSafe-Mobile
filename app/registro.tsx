@@ -4,6 +4,9 @@ import { useState } from "react";
 import { View } from "react-native";
 import { Button, Snackbar, Text, TextInput } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import { auth, db } from "@/src/services/firebase";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 
 export default function Registro() {
   const router = useRouter();
@@ -17,34 +20,74 @@ export default function Registro() {
   const [visible, setVisible] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
 
-  async function handleRegistrar() {
-    if (!nome || !email || !telefone || !senha || !confirmarSenha) {
-      setSnackMessage("Preencha todos os campos!");
-      setVisible(true);
-      return;
-    }
-
-    if (senha !== confirmarSenha) {
-      setSnackMessage("As senhas não coincidem!");
-      setVisible(true);
-      return;
-    }
-
-    setSnackMessage("Cadastro realizado com sucesso!");
+ async function handleRegistrar() {
+  if (!nome || !email || !telefone || !senha || !confirmarSenha) {
+    setSnackMessage("Preencha todos os campos!");
     setVisible(true);
+    return;
+  }
+
+  if (senha !== confirmarSenha) {
+    setSnackMessage("As senhas não coincidem!");
+    setVisible(true);
+    return;
+  }
+
+  try {
+    // aqui ta criando o usuario no Firebase Authentication usando a funcao 
+    // createUserWithEmailAndPassword, que recebe o email e a senha do usuario e cria 
+    // uma nova conta. Se der certo, ele retorna um objeto userCredential com as informacoes 
+    // do usuario criado.
+    const userCredential = await createUserWithEmailAndPassword(
+      auth,
+      email.trim(),
+      senha
+    );
+
+    const user = userCredential.user;
+
+    // salvando os dados no firestore
+    await setDoc(doc(db, "usuarios", user.uid), {
+      nome: nome.trim(),
+      email: email.trim(),
+      telefone: telefone.trim(),
+      criadoEm: new Date(),
+    });
+
+    // aqui ta salvando os dados do usuario no localStorage usando a funcao saveStoredUser,
+    // que recebe um objeto com as informacoes do usuario e salva no armazenamento local do dispositivo.
     await saveStoredUser({
       nome: nome.trim(),
       email: email.trim(),
       telefone: telefone.trim(),
       rememberMe: true,
     });
-    console.log("Registrando usuário:", { nome, email, telefone });
 
-    // Voltar para a tela inicial após 2.5 segundos
+    setSnackMessage("Cadastro realizado com sucesso!");
+    setVisible(true);
+
+    console.log("Usuário registrado:", user.uid);
+
     setTimeout(() => {
       router.replace("/");
     }, 2500);
+
+  } catch (error: any) {
+    console.log(error);
+
+    if (error.code === "auth/email-already-in-use") {
+      setSnackMessage("Esse email já está em uso.");
+    } else if (error.code === "auth/invalid-email") {
+      setSnackMessage("Email inválido.");
+    } else if (error.code === "auth/weak-password") {
+      setSnackMessage("A senha deve ter pelo menos 6 caracteres.");
+    } else {
+      setSnackMessage("Erro ao cadastrar usuário.");
+    }
+
+    setVisible(true);
   }
+}
 
   return (
     <SafeAreaProvider style={{ backgroundColor: "#e8e8e8" }}>

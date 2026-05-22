@@ -1,11 +1,14 @@
+import { AppHeader } from "@/src/components/AppHeader";
+import { clearStoredUser, getStoredUser } from "@/src/storage/userStorage";
+import { StoredUser } from "@/src/types/wifi";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
 import { View } from "react-native";
 import { Avatar, Button, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { AppHeader } from "@/src/components/AppHeader";
-import { clearStoredUser, getStoredUser } from "@/src/storage/userStorage";
-import { StoredUser } from "@/src/types/wifi";
+
+//essa funcao faz a tela de conta do usuario, 
+// onde ele pode ver suas informacoes e deslogar. 
 
 export default function AccountScreen() {
   const router = useRouter();
@@ -64,7 +67,7 @@ export default function AccountScreen() {
           <Button
             mode="text"
             icon="account-edit"
-            onPress={() => router.push("/registro")}
+            onPress={() => router.push("./edit-account")}
             style={{ alignSelf: "flex-start", marginTop: 6 }}
             textColor="#111827"
           >

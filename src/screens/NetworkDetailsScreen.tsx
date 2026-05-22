@@ -4,19 +4,11 @@ import { Modal, ScrollView, View } from "react-native";
 import { Button, Chip, Snackbar, Text, TextInput } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppHeader } from "@/src/components/AppHeader";
-import {
-  getRiskColor,
-  getRiskLabel,
-  getSecurityLabel,
-  getSecurityWarning,
-} from "@/src/services/wifiRules";
+import { getRiskColor, getRiskLabel, getSecurityLabel, getSecurityWarning} from "@/src/services/wifiRules";
 import { connectToWifiNetwork, findWifiNetwork } from "@/src/services/wifiService";
-import {
-  isFavoriteNetwork,
-  removeFavoriteNetwork,
-  saveFavoriteNetwork,
-} from "@/src/storage/favoritesStorage";
+import { isFavoriteNetwork, removeFavoriteNetwork, saveFavoriteNetwork} from "@/src/storage/favoritesStorage";
 import { WifiNetwork } from "@/src/types/wifi";
+
 
 export default function NetworkDetailsScreen() {
   const router = useRouter();
