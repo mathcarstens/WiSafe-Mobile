@@ -4,6 +4,7 @@ import { ScrollView, View } from "react-native";
 import { Button, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppHeader } from "@/src/components/AppHeader";
+import { MainNavigationBar } from "@/src/components/MainNavigationBar";
 import { NetworkCard } from "@/src/components/NetworkCard";
 import { getFavoriteNetworks, toggleFavoriteNetwork, } from "@/src/storage/favoritesStorage";
 import { WifiNetwork } from "@/src/types/wifi";
@@ -31,6 +32,7 @@ export default function FavoritesScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eef2f6" }}>
       <AppHeader />
+      <MainNavigationBar active="favorites" />
 
       <ScrollView contentContainerStyle={{ padding: 16, gap: 12 }}>
         <View style={{ gap: 4, marginBottom: 4 }}>

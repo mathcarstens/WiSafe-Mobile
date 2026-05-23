@@ -120,7 +120,7 @@ export default function EsqueciSenha() {
             {/* Título */}
             <View
               style={{
-                backgroundColor: "#1a3a1a",
+                backgroundColor: "#1a3a6b",
                 paddingVertical: 16,
                 alignItems: "center",
               }}
@@ -189,7 +189,7 @@ export default function EsqueciSenha() {
                 loading={loading}
                 disabled={loading}
                 style={{
-                  backgroundColor: "#1a3a1a",
+                  backgroundColor: "#1a3a6b",
                   borderRadius: 10,
                   marginTop: 8,
                   paddingVertical: 4,

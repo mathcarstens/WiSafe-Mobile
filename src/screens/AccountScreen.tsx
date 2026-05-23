@@ -1,5 +1,6 @@
 import { AppHeader } from "@/src/components/AppHeader";
-import { clearStoredUser, getStoredUser } from "@/src/storage/userStorage";
+import { MainNavigationBar } from "@/src/components/MainNavigationBar";
+import { getStoredUser } from "@/src/storage/userStorage";
 import { StoredUser } from "@/src/types/wifi";
 import { useRouter } from "expo-router";
 import { useEffect, useState } from "react";
@@ -18,14 +19,10 @@ export default function AccountScreen() {
     getStoredUser().then(setUser);
   }, []);
 
-  async function handleDeslogar() {
-    await clearStoredUser();
-    router.replace("/login");
-  }
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eef2f6" }}>
       <AppHeader />
+      <MainNavigationBar active="account" />
 
       <View
         style={{
@@ -78,7 +75,7 @@ export default function AccountScreen() {
         <Button
           mode="contained"
           icon="logout"
-          onPress={handleDeslogar}
+          onPress={() => router.push("./logout")}
           style={{
             alignSelf: "center",
             borderRadius: 6,

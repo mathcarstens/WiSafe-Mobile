@@ -1,6 +1,7 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { View } from "react-native";
+import { Image, View } from "react-native";
 import { Text } from "react-native-paper";
+
+const headerIcon = require("../../assets/images/wifi-protect.jpeg");
 
 export function AppHeader() {
   return (
@@ -26,7 +27,11 @@ export function AppHeader() {
           alignItems: "center",
         }}
       >
-        <MaterialCommunityIcons name="shield-check" size={20} color="#ffffff" />
+        <Image
+          source={headerIcon}
+          style={{ width: 26, height: 26, borderRadius: 13 }}
+          resizeMode="cover"
+        />
       </View>
 
       <View>
