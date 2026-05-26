@@ -1,6 +1,6 @@
 import { AppHeader } from "@/src/components/AppHeader";
 import { auth, db } from "@/src/services/firebase";
-import { getStoredUser, saveStoredUser } from "@/src/storage/userStorage";
+import { clearStoredUser, getStoredUser, saveStoredUser } from "@/src/storage/userStorage";
 import { useRouter } from "expo-router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
@@ -61,9 +61,10 @@ export default function LoginScreen() {
         await saveStoredUser({
           nome: userData?.nome || "",
           email: firebaseUser.email || "",
-          telefone: userData?.telefone || "",
           rememberMe: true,
         });
+      } else {
+        await clearStoredUser();
       }
 
       setSnackMessage("Login realizado com sucesso!");
@@ -136,7 +137,7 @@ export default function LoginScreen() {
             />
 
             <TextInput
-              label="Senha opcional"
+              label="Senha"
               value={senha}
               onChangeText={setSenha}
               mode="outlined"

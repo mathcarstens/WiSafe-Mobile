@@ -13,7 +13,7 @@ export default function LogoutConfirmScreen() {
   async function handleConfirmLogout() {
     await clearStoredUser();
     await signOut(auth);
-    router.replace("/login");
+    router.replace("/");
   }
 
   function handleCancelLogout() {
@@ -57,17 +57,17 @@ export default function LogoutConfirmScreen() {
           </Text>
         </View>
 
-        <View style={{ alignItems: "center", gap: 40, marginTop: 52 }}>
+        <View style={{ alignItems: "center", gap: 16, marginTop: 38 }}>
           <Button
             mode="contained"
             onPress={handleConfirmLogout}
             style={{
-              width: 86,
-              borderRadius: 4,
+              width: 132,
+              borderRadius: 8,
               backgroundColor: "#000000",
             }}
-            contentStyle={{ height: 30 }}
-            labelStyle={{ color: "#ffffff", fontSize: 12 }}
+            contentStyle={{ height: 44 }}
+            labelStyle={{ color: "#ffffff", fontSize: 15, lineHeight: 18 }}
           >
             Sim
           </Button>
@@ -76,12 +76,12 @@ export default function LogoutConfirmScreen() {
             mode="contained"
             onPress={handleCancelLogout}
             style={{
-              width: 86,
-              borderRadius: 4,
+              width: 132,
+              borderRadius: 8,
               backgroundColor: "#000000",
             }}
-            contentStyle={{ height: 30 }}
-            labelStyle={{ color: "#ffffff", fontSize: 12 }}
+            contentStyle={{ height: 44 }}
+            labelStyle={{ color: "#ffffff", fontSize: 15, lineHeight: 18 }}
           >
             Nao
           </Button>

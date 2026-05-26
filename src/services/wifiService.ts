@@ -14,6 +14,8 @@ type NativeWifiNetwork = {
 
 declare const require: (name: string) => any;
 
+let lastScannedNetworks: WifiNetwork[] = [];
+
 const mockNetworks: WifiNetwork[] = [
   createWifiNetwork({
     ssid: "Casa_Heloisa",
@@ -86,28 +88,36 @@ async function scanWithWifiReborn() {
   }
 }
 
-export async function scanWifiNetworks(): Promise<WifiNetwork[]> {
+export async function scanWifiNetworks(forceRefresh = false): Promise<WifiNetwork[]> {
   if (Platform.OS !== "android") {
+    lastScannedNetworks = mockNetworks;
     return mockNetworks;
   }
 
   const nativeScanner = NativeModules.WifiScanner;
 
   if (nativeScanner?.scanWifiNetworks) {
-    const networks = (await nativeScanner.scanWifiNetworks()) as NativeWifiNetwork[];
-    return networks.map(mapNativeNetwork);
+    const networks = (await nativeScanner.scanWifiNetworks(forceRefresh)) as NativeWifiNetwork[];
+    lastScannedNetworks = networks.map(mapNativeNetwork);
+    return lastScannedNetworks;
   }
 
   const wifiRebornNetworks = await scanWithWifiReborn();
 
   if (wifiRebornNetworks?.length) {
+    lastScannedNetworks = wifiRebornNetworks;
     return wifiRebornNetworks;
   }
 
+  lastScannedNetworks = mockNetworks;
   return mockNetworks;
 }
 
 export async function findWifiNetwork(bssid: string) {
+  const cached = lastScannedNetworks.find((network) => network.bssid === bssid);
+
+  if (cached) return cached;
+
   const networks = await scanWifiNetworks();
   return networks.find((network) => network.bssid === bssid) ?? null;
 }

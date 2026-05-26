@@ -57,9 +57,6 @@ export default function AccountScreen() {
           <Text style={{ color: "#9ca3af", marginTop: 8 }}>
             {user?.email || "email nao informado"}
           </Text>
-          <Text style={{ color: "#9ca3af", marginTop: 6 }}>
-            {user?.telefone || "Telefone nao informado"}
-          </Text>
 
           <Button
             mode="text"

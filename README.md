@@ -157,6 +157,35 @@ Para rodar como app Android nativo:
 npm run android
 ```
 
+## Como gerar APK/AAB com EAS
+
+O projeto tambem esta preparado para usar o EAS Build.
+
+Antes de gerar o app, faca login na sua conta Expo:
+
+```bash
+npx.cmd eas-cli login
+```
+
+Para gerar um APK de teste, que pode ser instalado diretamente no celular:
+
+```bash
+npm.cmd run eas:android:preview
+```
+
+Para gerar uma versao de producao em AAB, formato usado para publicar na Google Play:
+
+```bash
+npm.cmd run eas:android:production
+```
+
+O arquivo `eas.json` possui dois perfis principais:
+
+- `preview`: gera APK para teste interno.
+- `production`: gera AAB para publicacao.
+
+Como este app possui codigo nativo Android para Wi-Fi, o EAS vai usar tambem a pasta `android/` durante a build.
+
 Também é possível abrir a pasta `android` no Android Studio:
 
 ```text

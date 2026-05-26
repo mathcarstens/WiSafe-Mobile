@@ -1,5 +1,19 @@
 # memorias.MD
 
+## Atualizacao implementada em 25/05/2026
+
+Foram aplicadas melhorias depois do teste do APK:
+
+- Ao tentar conectar em rede de risco medio ou alto, o app agora mostra um aviso em duas etapas antes de continuar.
+- A opcao de telefone foi removida do cadastro, edicao, conta e armazenamento local.
+- O botao Escanear agora pede uma nova varredura em vez de depender de fechar e abrir o app.
+- O app salva o login quando "Lembrar de mim" esta marcado e entra direto na tela de redes ao abrir novamente.
+- O logout limpa o usuario salvo e volta para a tela inicial com carrossel e criar conta.
+- A tela inicial de redes mostra "Bem-vindo, nome" acima de "Redes disponiveis".
+- O bug de selecionar uma rede e aparecer indisponivel foi reduzido usando cache da ultima varredura antes de fazer novo scan.
+- O icone nativo do Android passou a apontar para a imagem wifi-protect.jpeg convertida para recurso drawable.
+- A tela de recuperar senha passou a usar o mesmo AppHeader das demais telas.
+
 ## Ideia central do projeto
 
 O projeto é um aplicativo mobile de segurança em redes Wi-Fi.

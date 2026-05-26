@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Wifi Protect",
-    "slug": "Wifi Protect",
+    "slug": "wifi-protect",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/wifi-protect.jpeg",
@@ -21,6 +21,7 @@
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false,
+      "versionCode": 1,
       "permissions": [
         "ACCESS_FINE_LOCATION",
         "ACCESS_COARSE_LOCATION",
@@ -54,6 +55,12 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": false
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "4dd65689-d18d-4de4-bd20-986f3050cb0e"
+      }
     }
   }
 }

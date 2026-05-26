@@ -4,11 +4,21 @@ import { Modal, ScrollView, View } from "react-native";
 import { Button, Chip, Snackbar, Text, TextInput } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppHeader } from "@/src/components/AppHeader";
-import { getRiskColor, getRiskLabel, getSecurityLabel, getSecurityWarning} from "@/src/services/wifiRules";
+import {
+  getRiskColor,
+  getRiskLabel,
+  getSecurityLabel,
+  getSecurityWarning,
+} from "@/src/services/wifiRules";
 import { connectToWifiNetwork, findWifiNetwork } from "@/src/services/wifiService";
-import { isFavoriteNetwork, removeFavoriteNetwork, saveFavoriteNetwork} from "@/src/storage/favoritesStorage";
+import {
+  isFavoriteNetwork,
+  removeFavoriteNetwork,
+  saveFavoriteNetwork,
+} from "@/src/storage/favoritesStorage";
 import { WifiNetwork } from "@/src/types/wifi";
 
+type WarningStep = "question" | "risk";
 
 export default function NetworkDetailsScreen() {
   const router = useRouter();
@@ -17,6 +27,7 @@ export default function NetworkDetailsScreen() {
   const [snackVisible, setSnackVisible] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
   const [passwordModalVisible, setPasswordModalVisible] = useState(false);
+  const [warningStep, setWarningStep] = useState<WarningStep | null>(null);
   const [wifiPassword, setWifiPassword] = useState("");
   const [connecting, setConnecting] = useState(false);
 
@@ -50,6 +61,12 @@ export default function NetworkDetailsScreen() {
     setSnackVisible(true);
   }
 
+  function closeConnectionDialogs() {
+    setPasswordModalVisible(false);
+    setWarningStep(null);
+    setWifiPassword("");
+  }
+
   async function requestConnection(password?: string) {
     if (!network) return;
 
@@ -57,8 +74,7 @@ export default function NetworkDetailsScreen() {
 
     try {
       await connectToWifiNetwork(network, password);
-      setPasswordModalVisible(false);
-      setWifiPassword("");
+      closeConnectionDialogs();
       setSnackMessage("Pedido de conexao enviado. Confirme na janela do Android.");
     } catch (error) {
       setSnackMessage(
@@ -70,12 +86,13 @@ export default function NetworkDetailsScreen() {
     }
   }
 
-  function handleConnectPress() {
+  function continueToConnection() {
     if (!network) return;
 
     if (network.securityType === "WEP") {
       setSnackMessage("Redes WEP usam protecao antiga e nao sao suportadas para conexao pelo app.");
       setSnackVisible(true);
+      setWarningStep(null);
       return;
     }
 
@@ -87,13 +104,24 @@ export default function NetworkDetailsScreen() {
     setPasswordModalVisible(true);
   }
 
+  function handleConnectPress() {
+    if (!network) return;
+
+    if (network.riskLevel === "SAFE") {
+      continueToConnection();
+      return;
+    }
+
+    setWarningStep("question");
+  }
+
   if (!network) {
     return (
       <SafeAreaView style={{ flex: 1, backgroundColor: "#eef2f6" }}>
         <AppHeader />
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center", padding: 24 }}>
           <Text style={{ color: "#64748b", textAlign: "center" }}>
-            Rede nao encontrada. Volte e escaneie novamente.
+            Carregando dados da rede...
           </Text>
           <Button mode="contained" onPress={() => router.back()} style={{ marginTop: 16 }}>
             Voltar
@@ -104,6 +132,8 @@ export default function NetworkDetailsScreen() {
   }
 
   const riskColor = getRiskColor(network.riskLevel);
+  const riskLabel = getRiskLabel(network.riskLevel).toLowerCase();
+  const securityLabel = getSecurityLabel(network.securityType);
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#eef2f6" }}>
@@ -126,7 +156,7 @@ export default function NetworkDetailsScreen() {
 
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: 8 }}>
             <Chip icon="lock" textStyle={{ color: riskColor }}>
-              {getSecurityLabel(network.securityType)}
+              {securityLabel}
             </Chip>
             <Chip icon="shield-alert" textStyle={{ color: riskColor }}>
               {getRiskLabel(network.riskLevel)}
@@ -188,6 +218,83 @@ export default function NetworkDetailsScreen() {
       </ScrollView>
 
       <Modal
+        visible={warningStep !== null}
+        transparent
+        animationType="fade"
+        onRequestClose={closeConnectionDialogs}
+      >
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: "rgba(15, 23, 42, 0.45)",
+            justifyContent: "center",
+            padding: 20,
+          }}
+        >
+          <View style={{ backgroundColor: "#ffffff", borderRadius: 8, padding: 18, gap: 14 }}>
+            {warningStep === "question" ? (
+              <>
+                <Text style={{ fontSize: 20, fontWeight: "bold", color: "#111827" }}>
+                  Deseja conectar nessa rede?
+                </Text>
+                <Text style={{ color: "#475569", lineHeight: 20 }}>
+                  {network.ssid} e uma rede {securityLabel.toLowerCase()} com {riskLabel}.
+                  Antes de continuar, revise os riscos dessa conexao.
+                </Text>
+                <View style={{ flexDirection: "row", gap: 10 }}>
+                  <Button
+                    mode="outlined"
+                    onPress={closeConnectionDialogs}
+                    style={{ flex: 1, borderRadius: 8 }}
+                  >
+                    Cancelar
+                  </Button>
+                  <Button
+                    mode="contained"
+                    onPress={() => setWarningStep("risk")}
+                    style={{ flex: 1, borderRadius: 8, backgroundColor: riskColor }}
+                  >
+                    Continuar
+                  </Button>
+                </View>
+              </>
+            ) : (
+              <>
+                <Text style={{ fontSize: 20, fontWeight: "bold", color: "#111827" }}>
+                  Riscos da rede
+                </Text>
+                <Text style={{ color: "#475569", lineHeight: 20 }}>
+                  {getSecurityWarning(network.riskLevel)}
+                </Text>
+                <Text style={{ color: "#475569", lineHeight: 20 }}>
+                  Evite acessar bancos, contas pessoais ou enviar dados sensiveis nessa conexao.
+                </Text>
+                <View style={{ flexDirection: "row", gap: 10 }}>
+                  <Button
+                    mode="outlined"
+                    onPress={closeConnectionDialogs}
+                    style={{ flex: 1, borderRadius: 8 }}
+                    disabled={connecting}
+                  >
+                    Nao conectar
+                  </Button>
+                  <Button
+                    mode="contained"
+                    onPress={continueToConnection}
+                    loading={connecting}
+                    disabled={connecting}
+                    style={{ flex: 1, borderRadius: 8, backgroundColor: riskColor }}
+                  >
+                    Entendi
+                  </Button>
+                </View>
+              </>
+            )}
+          </View>
+        </View>
+      </Modal>
+
+      <Modal
         visible={passwordModalVisible}
         transparent
         animationType="fade"
@@ -201,14 +308,7 @@ export default function NetworkDetailsScreen() {
             padding: 20,
           }}
         >
-          <View
-            style={{
-              backgroundColor: "#ffffff",
-              borderRadius: 8,
-              padding: 18,
-              gap: 12,
-            }}
-          >
+          <View style={{ backgroundColor: "#ffffff", borderRadius: 8, padding: 18, gap: 12 }}>
             <Text style={{ fontSize: 18, fontWeight: "bold", color: "#1f2937" }}>
               Senha da rede
             </Text>
@@ -250,7 +350,7 @@ export default function NetworkDetailsScreen() {
       <Snackbar
         visible={snackVisible}
         onDismiss={() => setSnackVisible(false)}
-        duration={2500}
+        duration={3000}
       >
         {snackMessage}
       </Snackbar>

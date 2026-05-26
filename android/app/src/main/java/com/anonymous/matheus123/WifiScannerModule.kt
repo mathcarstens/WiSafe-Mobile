@@ -29,7 +29,7 @@ class WifiScannerModule(private val reactContext: ReactApplicationContext) :
   override fun getName(): String = "WifiScanner"
 
   @ReactMethod
-  fun scanWifiNetworks(promise: Promise) {
+  fun scanWifiNetworks(forceRefresh: Boolean, promise: Promise) {
     val appContext = reactContext.applicationContext
     val wifiManager = appContext.getSystemService(Context.WIFI_SERVICE) as WifiManager
 

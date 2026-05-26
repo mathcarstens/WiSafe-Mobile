@@ -1,5 +1,5 @@
 import { useRouter } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   ImageBackground,
   NativeScrollEvent,
@@ -12,6 +12,7 @@ import {
 import { Button, Text } from "react-native-paper";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { AppHeader } from "@/src/components/AppHeader";
+import { getStoredUser } from "@/src/storage/userStorage";
 
 const carouselImages = [
   require("../../assets/images/1.png"),
@@ -23,6 +24,14 @@ export default function HomeScreen() {
   const router = useRouter();
   const { width } = useWindowDimensions();
   const [activeSlide, setActiveSlide] = useState(0);
+
+  useEffect(() => {
+    getStoredUser().then((user) => {
+      if (user?.rememberMe) {
+        router.replace("/home");
+      }
+    });
+  }, [router]);
 
   function handleCarouselScroll(event: NativeSyntheticEvent<NativeScrollEvent>) {
     const slide = Math.round(event.nativeEvent.contentOffset.x / width);

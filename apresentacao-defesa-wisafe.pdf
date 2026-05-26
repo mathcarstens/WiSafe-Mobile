@@ -1,0 +1,1030 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [7 0 R 9 0 R 11 0 R 13 0 R 15 0 R 17 0 R 19 0 R] /Count 7 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier >>
+endobj
+6 0 obj
+<< /Length 3364 >>
+stream
+BT
+/F2 22 Tf
+54.00 779.89 Td
+(Defesa do Projeto WiSafe / Wifi Protect) Tj
+-54.00 -779.89 Td
+/F2 15 Tf
+54.00 725.89 Td
+(1. Abertura) Tj
+-54.00 -725.89 Td
+/F1 11 Tf
+54.00 694.89 Td
+(O WiSafe, tambem chamado de Wifi Protect, e um aplicativo mobile criado para ajudar o) Tj
+-54.00 -694.89 Td
+/F1 11 Tf
+54.00 678.89 Td
+(usuario a identificar redes Wi-Fi proximas e entender se elas sao seguras antes de) Tj
+-54.00 -678.89 Td
+/F1 11 Tf
+54.00 662.89 Td
+(tentar se conectar.) Tj
+-54.00 -662.89 Td
+/F1 11 Tf
+54.00 640.89 Td
+(O projeto atende aos requisitos obrigatorios do trabalho e vai alem deles, porque usa) Tj
+-54.00 -640.89 Td
+/F1 11 Tf
+54.00 624.89 Td
+(um recurso nativo real do Android para fazer a varredura das redes Wi-Fi disponiveis) Tj
+-54.00 -624.89 Td
+/F1 11 Tf
+54.00 608.89 Td
+(no ambiente.) Tj
+-54.00 -608.89 Td
+/F1 11 Tf
+54.00 586.89 Td
+(Tempo sugerido: 1 minuto.) Tj
+-54.00 -586.89 Td
+/F2 15 Tf
+54.00 554.89 Td
+(2. Sequencia da apresentacao) Tj
+-54.00 -554.89 Td
+/F1 10.5 Tf
+64.00 523.89 Td
+(1. Apresentar o objetivo do app.) Tj
+-64.00 -523.89 Td
+/F1 10.5 Tf
+64.00 508.89 Td
+(2. Mostrar os requisitos obrigatorios atendidos.) Tj
+-64.00 -508.89 Td
+/F1 10.5 Tf
+64.00 493.89 Td
+(3. Mostrar as telas e a navegacao.) Tj
+-64.00 -493.89 Td
+/F1 10.5 Tf
+64.00 478.89 Td
+(4. Explicar login, cadastro e controle de acesso.) Tj
+-64.00 -478.89 Td
+/F1 10.5 Tf
+64.00 463.89 Td
+(5. Explicar banco de dados e armazenamento local.) Tj
+-64.00 -463.89 Td
+/F1 10.5 Tf
+64.00 448.89 Td
+(6. Explicar a parte de redes Wi-Fi e recurso nativo Android.) Tj
+-64.00 -448.89 Td
+/F1 10.5 Tf
+64.00 433.89 Td
+(7. Mostrar a classificacao de risco e os avisos de seguranca.) Tj
+-64.00 -433.89 Td
+/F1 10.5 Tf
+64.00 418.89 Td
+(8. Finalizar com os diferenciais do projeto.) Tj
+-64.00 -418.89 Td
+/F1 11 Tf
+54.00 397.89 Td
+(Tempo total sugerido: ate 15 minutos.) Tj
+-54.00 -397.89 Td
+/F2 15 Tf
+54.00 365.89 Td
+(3. Telas e navegacao) Tj
+-54.00 -365.89 Td
+/F1 11 Tf
+54.00 334.89 Td
+(Arquivos principais:) Tj
+-54.00 -334.89 Td
+/F1 10.5 Tf
+64.00 312.89 Td
+(- src/screens/HomeScreen.tsx) Tj
+-64.00 -312.89 Td
+/F1 10.5 Tf
+64.00 297.89 Td
+(- src/screens/LoginScreen.tsx) Tj
+-64.00 -297.89 Td
+/F1 10.5 Tf
+64.00 282.89 Td
+(- app/registro.tsx) Tj
+-64.00 -282.89 Td
+/F1 10.5 Tf
+64.00 267.89 Td
+(- src/screens/NetworksScreen.tsx) Tj
+-64.00 -267.89 Td
+/F1 10.5 Tf
+64.00 252.89 Td
+(- src/screens/NetworkDetailsScreen.tsx) Tj
+-64.00 -252.89 Td
+/F1 10.5 Tf
+64.00 237.89 Td
+(- src/screens/FavoritesScreen.tsx) Tj
+-64.00 -237.89 Td
+/F1 10.5 Tf
+64.00 222.89 Td
+(- src/screens/AccountScreen.tsx) Tj
+-64.00 -222.89 Td
+/F1 10.5 Tf
+64.00 207.89 Td
+(- src/screens/LogoutConfirmScreen.tsx) Tj
+-64.00 -207.89 Td
+/F1 11 Tf
+54.00 186.89 Td
+(Funcoes principais para apresentar:) Tj
+-54.00 -186.89 Td
+/F3 9.5 Tf
+66.00 164.89 Td
+(export default function HomeScreen\(\)) Tj
+-66.00 -164.89 Td
+/F1 11 Tf
+54.00 141.89 Td
+(Essa funcao representa a tela inicial do app. Ela mostra o carrossel com imagens, o) Tj
+-54.00 -141.89 Td
+/F1 11 Tf
+54.00 125.89 Td
+(botao para comecar e o botao para criar conta.) Tj
+-54.00 -125.89 Td
+/F3 9.5 Tf
+66.00 103.89 Td
+(export default function LoginScreen\(\)) Tj
+-66.00 -103.89 Td
+/F1 11 Tf
+54.00 80.89 Td
+(Essa funcao representa a tela de login. Nela o usuario informa e-mail e senha para) Tj
+-54.00 -80.89 Td
+/F1 9 Tf
+54.00 28 Td
+(WiSafe / Wifi Protect - Defesa do projeto | Pagina 1 de 7) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 3206 >>
+stream
+BT
+/F1 11 Tf
+54.00 787.89 Td
+(acessar o aplicativo.) Tj
+-54.00 -787.89 Td
+/F3 9.5 Tf
+66.00 765.89 Td
+(export default function NetworksScreen\(\)) Tj
+-66.00 -765.89 Td
+/F1 11 Tf
+54.00 742.89 Td
+(Essa e a tela principal depois do login. Ela mostra as redes Wi-Fi disponiveis, o) Tj
+-54.00 -742.89 Td
+/F1 11 Tf
+54.00 726.89 Td
+(nome do usuario e o botao de escanear.) Tj
+-54.00 -726.89 Td
+/F3 9.5 Tf
+66.00 704.89 Td
+(export default function NetworkDetailsScreen\(\)) Tj
+-66.00 -704.89 Td
+/F1 11 Tf
+54.00 681.89 Td
+(Essa tela mostra os detalhes da rede selecionada, como nome, seguranca, sinal,) Tj
+-54.00 -681.89 Td
+/F1 11 Tf
+54.00 665.89 Td
+(frequencia e nivel de risco.) Tj
+-54.00 -665.89 Td
+/F1 11 Tf
+54.00 643.89 Td
+(Codigo de navegacao:) Tj
+-54.00 -643.89 Td
+/F3 9.5 Tf
+66.00 621.89 Td
+(router.push\("/login"\)) Tj
+-66.00 -621.89 Td
+/F3 9.5 Tf
+66.00 608.89 Td
+(router.push\("/registro"\)) Tj
+-66.00 -608.89 Td
+/F3 9.5 Tf
+66.00 595.89 Td
+(router.replace\("/home"\)) Tj
+-66.00 -595.89 Td
+/F3 9.5 Tf
+66.00 582.89 Td
+(router.push\("/network-details"\)) Tj
+-66.00 -582.89 Td
+/F1 11 Tf
+54.00 559.89 Td
+(Explicacao para falar:) Tj
+-54.00 -559.89 Td
+/F1 11 Tf
+54.00 537.89 Td
+(O app usa Expo Router para navegar entre as telas. O router.push abre uma nova tela,) Tj
+-54.00 -537.89 Td
+/F1 11 Tf
+54.00 521.89 Td
+(enquanto o router.replace troca a tela atual, evitando que o usuario volte para uma) Tj
+-54.00 -521.89 Td
+/F1 11 Tf
+54.00 505.89 Td
+(tela indevida, como aconteceu no caso do logout.) Tj
+-54.00 -505.89 Td
+/F2 15 Tf
+54.00 473.89 Td
+(4. Controle de acesso) Tj
+-54.00 -473.89 Td
+/F1 11 Tf
+54.00 442.89 Td
+(Arquivo principal:) Tj
+-54.00 -442.89 Td
+/F1 10.5 Tf
+64.00 420.89 Td
+(- src/screens/LoginScreen.tsx) Tj
+-64.00 -420.89 Td
+/F1 11 Tf
+54.00 399.89 Td
+(Funcao principal:) Tj
+-54.00 -399.89 Td
+/F3 9.5 Tf
+66.00 377.89 Td
+(async function handleEntrar\(\)) Tj
+-66.00 -377.89 Td
+/F1 11 Tf
+54.00 354.89 Td
+(Essa funcao valida os campos de login, chama o Firebase Authentication e, se o login) Tj
+-54.00 -354.89 Td
+/F1 11 Tf
+54.00 338.89 Td
+(estiver correto, envia o usuario para a tela de redes.) Tj
+-54.00 -338.89 Td
+/F1 11 Tf
+54.00 316.89 Td
+(Codigo importante:) Tj
+-54.00 -316.89 Td
+/F3 9.5 Tf
+66.00 294.89 Td
+(await signInWithEmailAndPassword\(auth, email.trim\(\), senha\)) Tj
+-66.00 -294.89 Td
+/F1 11 Tf
+54.00 271.89 Td
+(Explicacao para falar:) Tj
+-54.00 -271.89 Td
+/F1 11 Tf
+54.00 249.89 Td
+(O controle de acesso foi feito com Firebase Authentication. Isso significa que o app) Tj
+-54.00 -249.89 Td
+/F1 11 Tf
+54.00 233.89 Td
+(nao libera a tela principal sem antes validar o e-mail e a senha do usuario.) Tj
+-54.00 -233.89 Td
+/F1 11 Tf
+54.00 211.89 Td
+(Tambem existe a opcao "Lembrar de mim", que salva o login no dispositivo.) Tj
+-54.00 -211.89 Td
+/F2 15 Tf
+54.00 179.89 Td
+(5. Cadastro e coleta de dados) Tj
+-54.00 -179.89 Td
+/F1 11 Tf
+54.00 148.89 Td
+(Arquivo principal:) Tj
+-54.00 -148.89 Td
+/F1 10.5 Tf
+64.00 126.89 Td
+(- app/registro.tsx) Tj
+-64.00 -126.89 Td
+/F1 11 Tf
+54.00 105.89 Td
+(Funcao principal:) Tj
+-54.00 -105.89 Td
+/F3 9.5 Tf
+66.00 83.89 Td
+(async function handleRegistrar\(\)) Tj
+-66.00 -83.89 Td
+/F1 9 Tf
+54.00 28 Td
+(WiSafe / Wifi Protect - Defesa do projeto | Pagina 2 de 7) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Length 3162 >>
+stream
+BT
+/F1 11 Tf
+54.00 787.89 Td
+(Essa funcao coleta nome, e-mail e senha. Depois cria o usuario no Firebase e salva os) Tj
+-54.00 -787.89 Td
+/F1 11 Tf
+54.00 771.89 Td
+(dados basicos no Firestore.) Tj
+-54.00 -771.89 Td
+/F1 11 Tf
+54.00 749.89 Td
+(Codigo importante:) Tj
+-54.00 -749.89 Td
+/F3 9.5 Tf
+66.00 727.89 Td
+(await createUserWithEmailAndPassword\(auth, email.trim\(\), senha\)) Tj
+-66.00 -727.89 Td
+/F3 9.5 Tf
+66.00 704.89 Td
+(await setDoc\(doc\(db, "usuarios", user.uid\), {) Tj
+-66.00 -704.89 Td
+/F3 9.5 Tf
+66.00 691.89 Td
+(nome,) Tj
+-66.00 -691.89 Td
+/F3 9.5 Tf
+66.00 678.89 Td
+(email,) Tj
+-66.00 -678.89 Td
+/F3 9.5 Tf
+66.00 665.89 Td
+(}\)) Tj
+-66.00 -665.89 Td
+/F1 11 Tf
+54.00 642.89 Td
+(Explicacao para falar:) Tj
+-54.00 -642.89 Td
+/F1 11 Tf
+54.00 620.89 Td
+(A coleta de dados acontece no cadastro. O app coleta nome, e-mail e senha. A senha e) Tj
+-54.00 -620.89 Td
+/F1 11 Tf
+54.00 604.89 Td
+(usada pelo Firebase Authentication, e os dados como nome e e-mail sao armazenados no) Tj
+-54.00 -604.89 Td
+/F1 11 Tf
+54.00 588.89 Td
+(Firestore.) Tj
+-54.00 -588.89 Td
+/F2 15 Tf
+54.00 556.89 Td
+(6. Banco de dados) Tj
+-54.00 -556.89 Td
+/F1 11 Tf
+54.00 525.89 Td
+(Arquivo principal:) Tj
+-54.00 -525.89 Td
+/F1 10.5 Tf
+64.00 503.89 Td
+(- src/services/firebase.ts) Tj
+-64.00 -503.89 Td
+/F1 11 Tf
+54.00 482.89 Td
+(Codigo importante:) Tj
+-54.00 -482.89 Td
+/F3 9.5 Tf
+66.00 460.89 Td
+(export const auth = getAuth\(app\);) Tj
+-66.00 -460.89 Td
+/F3 9.5 Tf
+66.00 447.89 Td
+(export const db = getFirestore\(app\);) Tj
+-66.00 -447.89 Td
+/F1 11 Tf
+54.00 424.89 Td
+(Explicacao:) Tj
+-54.00 -424.89 Td
+/F1 11 Tf
+54.00 402.89 Td
+(O auth e usado para login, cadastro, recuperacao de senha e logout. O db representa o) Tj
+-54.00 -402.89 Td
+/F1 11 Tf
+54.00 386.89 Td
+(Firestore, usado para guardar dados do usuario.) Tj
+-54.00 -386.89 Td
+/F1 11 Tf
+54.00 364.89 Td
+(Na defesa, fale:) Tj
+-54.00 -364.89 Td
+/F1 11 Tf
+54.00 342.89 Td
+(O projeto usa Firebase em duas partes. A primeira e o Authentication, que cuida do) Tj
+-54.00 -342.89 Td
+/F1 11 Tf
+54.00 326.89 Td
+(acesso do usuario. A segunda e o Firestore, que armazena dados da conta, como nome e) Tj
+-54.00 -326.89 Td
+/F1 11 Tf
+54.00 310.89 Td
+(e-mail.) Tj
+-54.00 -310.89 Td
+/F2 15 Tf
+54.00 278.89 Td
+(7. Armazenamento no dispositivo) Tj
+-54.00 -278.89 Td
+/F1 11 Tf
+54.00 247.89 Td
+(Arquivos principais:) Tj
+-54.00 -247.89 Td
+/F1 10.5 Tf
+64.00 225.89 Td
+(- src/storage/userStorage.ts) Tj
+-64.00 -225.89 Td
+/F1 10.5 Tf
+64.00 210.89 Td
+(- src/storage/favoritesStorage.ts) Tj
+-64.00 -210.89 Td
+/F1 10.5 Tf
+64.00 195.89 Td
+(- src/storage/localStorage.ts) Tj
+-64.00 -195.89 Td
+/F1 11 Tf
+54.00 174.89 Td
+(Funcoes do usuario:) Tj
+-54.00 -174.89 Td
+/F3 9.5 Tf
+66.00 152.89 Td
+(saveStoredUser\(user\)) Tj
+-66.00 -152.89 Td
+/F3 9.5 Tf
+66.00 139.89 Td
+(getStoredUser\(\)) Tj
+-66.00 -139.89 Td
+/F3 9.5 Tf
+66.00 126.89 Td
+(clearStoredUser\(\)) Tj
+-66.00 -126.89 Td
+/F1 11 Tf
+54.00 103.89 Td
+(Explicacao:) Tj
+-54.00 -103.89 Td
+/F1 11 Tf
+54.00 81.89 Td
+(saveStoredUser salva o usuario no dispositivo. getStoredUser busca esse usuario salvo) Tj
+-54.00 -81.89 Td
+/F1 9 Tf
+54.00 28 Td
+(WiSafe / Wifi Protect - Defesa do projeto | Pagina 3 de 7) Tj
+ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+12 0 obj
+<< /Length 3268 >>
+stream
+BT
+/F1 11 Tf
+54.00 787.89 Td
+(quando o app abre. clearStoredUser apaga esses dados no logout.) Tj
+-54.00 -787.89 Td
+/F1 11 Tf
+54.00 765.89 Td
+(Funcoes dos favoritos:) Tj
+-54.00 -765.89 Td
+/F3 9.5 Tf
+66.00 743.89 Td
+(getFavoriteNetworks\(\)) Tj
+-66.00 -743.89 Td
+/F3 9.5 Tf
+66.00 730.89 Td
+(saveFavoriteNetwork\(network\)) Tj
+-66.00 -730.89 Td
+/F3 9.5 Tf
+66.00 717.89 Td
+(removeFavoriteNetwork\(bssid\)) Tj
+-66.00 -717.89 Td
+/F3 9.5 Tf
+66.00 704.89 Td
+(toggleFavoriteNetwork\(network\)) Tj
+-66.00 -704.89 Td
+/F1 11 Tf
+54.00 681.89 Td
+(Explicacao:) Tj
+-54.00 -681.89 Td
+/F1 11 Tf
+54.00 659.89 Td
+(Essas funcoes controlam as redes favoritas no armazenamento local. Assim, quando o) Tj
+-54.00 -659.89 Td
+/F1 11 Tf
+54.00 643.89 Td
+(usuario marca uma rede como confiavel, essa informacao continua salva no aparelho.) Tj
+-54.00 -643.89 Td
+/F1 11 Tf
+54.00 621.89 Td
+(Na defesa, fale:) Tj
+-54.00 -621.89 Td
+/F1 11 Tf
+54.00 599.89 Td
+(O app usa armazenamento local para melhorar a experiencia. Ele salva o login quando o) Tj
+-54.00 -599.89 Td
+/F1 11 Tf
+54.00 583.89 Td
+(usuario escolhe lembrar e tambem guarda redes favoritas no proprio dispositivo.) Tj
+-54.00 -583.89 Td
+/F2 15 Tf
+54.00 551.89 Td
+(8. Redes Wi-Fi) Tj
+-54.00 -551.89 Td
+/F1 11 Tf
+54.00 520.89 Td
+(Arquivo principal:) Tj
+-54.00 -520.89 Td
+/F1 10.5 Tf
+64.00 498.89 Td
+(- src/services/wifiService.ts) Tj
+-64.00 -498.89 Td
+/F1 11 Tf
+54.00 477.89 Td
+(Funcoes principais:) Tj
+-54.00 -477.89 Td
+/F3 9.5 Tf
+66.00 455.89 Td
+(scanWifiNetworks\(forceRefresh = false\)) Tj
+-66.00 -455.89 Td
+/F1 11 Tf
+54.00 432.89 Td
+(Essa funcao busca as redes Wi-Fi proximas. Quando forceRefresh e verdadeiro, ela pede) Tj
+-54.00 -432.89 Td
+/F1 11 Tf
+54.00 416.89 Td
+(uma nova varredura.) Tj
+-54.00 -416.89 Td
+/F3 9.5 Tf
+66.00 394.89 Td
+(findWifiNetwork\(bssid\)) Tj
+-66.00 -394.89 Td
+/F1 11 Tf
+54.00 371.89 Td
+(Essa funcao procura uma rede especifica pelo BSSID, que funciona como um) Tj
+-54.00 -371.89 Td
+/F1 11 Tf
+54.00 355.89 Td
+(identificador da rede.) Tj
+-54.00 -355.89 Td
+/F3 9.5 Tf
+66.00 333.89 Td
+(connectToWifiNetwork\(network, password\)) Tj
+-66.00 -333.89 Td
+/F1 11 Tf
+54.00 310.89 Td
+(Essa funcao envia para o Android o pedido de conexao com a rede escolhida.) Tj
+-54.00 -310.89 Td
+/F1 11 Tf
+54.00 288.89 Td
+(Codigo importante:) Tj
+-54.00 -288.89 Td
+/F3 9.5 Tf
+66.00 266.89 Td
+(const nativeScanner = NativeModules.WifiScanner;) Tj
+-66.00 -266.89 Td
+/F3 9.5 Tf
+66.00 253.89 Td
+(const networks = await nativeScanner.scanWifiNetworks\(forceRefresh\);) Tj
+-66.00 -253.89 Td
+/F1 11 Tf
+54.00 230.89 Td
+(Explicacao para falar:) Tj
+-54.00 -230.89 Td
+/F1 11 Tf
+54.00 208.89 Td
+(A interface do app foi feita em React Native, mas a busca real das redes depende de) Tj
+-54.00 -208.89 Td
+/F1 11 Tf
+54.00 192.89 Td
+(um modulo nativo Android. O React Native chama esse modulo usando NativeModules.) Tj
+-54.00 -192.89 Td
+/F2 15 Tf
+54.00 160.89 Td
+(9. Recurso nativo Android) Tj
+-54.00 -160.89 Td
+/F1 11 Tf
+54.00 129.89 Td
+(Arquivo principal:) Tj
+-54.00 -129.89 Td
+/F1 10.5 Tf
+64.00 107.89 Td
+(- android/app/src/main/java/com/anonymous/matheus123/WifiScannerModule.kt) Tj
+-64.00 -107.89 Td
+/F1 11 Tf
+54.00 86.89 Td
+(Funcoes principais:) Tj
+-54.00 -86.89 Td
+/F1 9 Tf
+54.00 28 Td
+(WiSafe / Wifi Protect - Defesa do projeto | Pagina 4 de 7) Tj
+ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+14 0 obj
+<< /Length 3165 >>
+stream
+BT
+/F3 9.5 Tf
+66.00 787.89 Td
+(fun scanWifiNetworks\(forceRefresh: Boolean, promise: Promise\)) Tj
+-66.00 -787.89 Td
+/F1 11 Tf
+54.00 764.89 Td
+(Essa funcao usa o WifiManager do Android para iniciar a varredura de redes Wi-Fi) Tj
+-54.00 -764.89 Td
+/F1 11 Tf
+54.00 748.89 Td
+(proximas.) Tj
+-54.00 -748.89 Td
+/F3 9.5 Tf
+66.00 726.89 Td
+(fun connectToNetwork\(ssid: String, securityType: String, password: String, promise: Promise\)) Tj
+-66.00 -726.89 Td
+/F1 11 Tf
+54.00 703.89 Td
+(Essa funcao solicita ao Android a conexao com uma rede Wi-Fi.) Tj
+-54.00 -703.89 Td
+/F1 11 Tf
+54.00 681.89 Td
+(Codigo importante:) Tj
+-54.00 -681.89 Td
+/F3 9.5 Tf
+66.00 659.89 Td
+(val wifiManager = appContext.getSystemService\(Context.WIFI_SERVICE\) as WifiManager) Tj
+-66.00 -659.89 Td
+/F3 9.5 Tf
+66.00 646.89 Td
+(wifiManager.startScan\(\)) Tj
+-66.00 -646.89 Td
+/F1 11 Tf
+54.00 623.89 Td
+(Explicacao para falar:) Tj
+-54.00 -623.89 Td
+/F1 11 Tf
+54.00 601.89 Td
+(Esse e o recurso nativo mais importante do projeto. O app nao mostra apenas redes) Tj
+-54.00 -601.89 Td
+/F1 11 Tf
+54.00 585.89 Td
+(fixas na tela. Ele usa o Android para procurar redes reais proximas do celular.) Tj
+-54.00 -585.89 Td
+/F2 15 Tf
+54.00 553.89 Td
+(10. Regras de seguranca) Tj
+-54.00 -553.89 Td
+/F1 11 Tf
+54.00 522.89 Td
+(Arquivo principal:) Tj
+-54.00 -522.89 Td
+/F1 10.5 Tf
+64.00 500.89 Td
+(- src/services/wifiRules.ts) Tj
+-64.00 -500.89 Td
+/F1 11 Tf
+54.00 479.89 Td
+(Funcoes principais:) Tj
+-54.00 -479.89 Td
+/F3 9.5 Tf
+66.00 457.89 Td
+(getSecurityType\(capabilities\)) Tj
+-66.00 -457.89 Td
+/F1 11 Tf
+54.00 434.89 Td
+(Identifica se a rede e aberta, WEP, WPA, WPA2, WPA3 ou desconhecida.) Tj
+-54.00 -434.89 Td
+/F3 9.5 Tf
+66.00 412.89 Td
+(classifyRisk\(securityType\)) Tj
+-66.00 -412.89 Td
+/F1 11 Tf
+54.00 389.89 Td
+(Classifica o risco da rede:) Tj
+-54.00 -389.89 Td
+/F1 10.5 Tf
+64.00 367.89 Td
+(- OPEN: alto risco) Tj
+-64.00 -367.89 Td
+/F1 10.5 Tf
+64.00 352.89 Td
+(- WEP: medio risco) Tj
+-64.00 -352.89 Td
+/F1 10.5 Tf
+64.00 337.89 Td
+(- WPA: medio risco) Tj
+-64.00 -337.89 Td
+/F1 10.5 Tf
+64.00 322.89 Td
+(- WPA2: seguro) Tj
+-64.00 -322.89 Td
+/F1 10.5 Tf
+64.00 307.89 Td
+(- WPA3: seguro) Tj
+-64.00 -307.89 Td
+/F3 9.5 Tf
+66.00 286.89 Td
+(getSignalLabel\(level\)) Tj
+-66.00 -286.89 Td
+/F1 11 Tf
+54.00 263.89 Td
+(Transforma o nivel do sinal em uma informacao mais facil para o usuario: forte, medio) Tj
+-54.00 -263.89 Td
+/F1 11 Tf
+54.00 247.89 Td
+(ou fraco.) Tj
+-54.00 -247.89 Td
+/F3 9.5 Tf
+66.00 225.89 Td
+(getSecurityWarning\(riskLevel\)) Tj
+-66.00 -225.89 Td
+/F1 11 Tf
+54.00 202.89 Td
+(Gera o texto de alerta mostrado para o usuario.) Tj
+-54.00 -202.89 Td
+/F1 11 Tf
+54.00 180.89 Td
+(Explicacao para falar:) Tj
+-54.00 -180.89 Td
+/F1 11 Tf
+54.00 158.89 Td
+(Depois que o Android retorna as redes, o app interpreta o tipo de seguranca e) Tj
+-54.00 -158.89 Td
+/F1 11 Tf
+54.00 142.89 Td
+(transforma isso em uma classificacao simples: seguro, medio risco ou alto risco.) Tj
+-54.00 -142.89 Td
+/F2 15 Tf
+54.00 110.89 Td
+(11. Aviso antes de conectar) Tj
+-54.00 -110.89 Td
+/F1 11 Tf
+54.00 79.89 Td
+(Arquivo principal:) Tj
+-54.00 -79.89 Td
+/F1 9 Tf
+54.00 28 Td
+(WiSafe / Wifi Protect - Defesa do projeto | Pagina 5 de 7) Tj
+ET
+endstream
+endobj
+15 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 14 0 R >>
+endobj
+16 0 obj
+<< /Length 3410 >>
+stream
+BT
+/F1 10.5 Tf
+64.00 787.89 Td
+(- src/screens/NetworkDetailsScreen.tsx) Tj
+-64.00 -787.89 Td
+/F1 11 Tf
+54.00 766.89 Td
+(Funcoes principais:) Tj
+-54.00 -766.89 Td
+/F3 9.5 Tf
+66.00 744.89 Td
+(handleConnectPress\(\)) Tj
+-66.00 -744.89 Td
+/F1 11 Tf
+54.00 721.89 Td
+(Verifica se a rede e segura. Se for de risco medio ou alto, abre o aviso antes de) Tj
+-54.00 -721.89 Td
+/F1 11 Tf
+54.00 705.89 Td
+(continuar.) Tj
+-54.00 -705.89 Td
+/F3 9.5 Tf
+66.00 683.89 Td
+(continueToConnection\(\)) Tj
+-66.00 -683.89 Td
+/F1 11 Tf
+54.00 660.89 Td
+(Continua o processo depois que o usuario confirma que entendeu os riscos.) Tj
+-54.00 -660.89 Td
+/F3 9.5 Tf
+66.00 638.89 Td
+(requestConnection\(password\)) Tj
+-66.00 -638.89 Td
+/F1 11 Tf
+54.00 615.89 Td
+(Chama a funcao de conexao e envia o pedido para o Android.) Tj
+-54.00 -615.89 Td
+/F1 11 Tf
+54.00 593.89 Td
+(Explicacao para falar:) Tj
+-54.00 -593.89 Td
+/F1 11 Tf
+54.00 571.89 Td
+(O app nao conecta automaticamente em redes de risco. Primeiro ele mostra um aviso em) Tj
+-54.00 -571.89 Td
+/F1 11 Tf
+54.00 555.89 Td
+(duas etapas. Isso ajuda o usuario a entender que redes abertas ou antigas podem expor) Tj
+-54.00 -555.89 Td
+/F1 11 Tf
+54.00 539.89 Td
+(dados pessoais.) Tj
+-54.00 -539.89 Td
+/F2 15 Tf
+54.00 507.89 Td
+(12. Componentes visuais) Tj
+-54.00 -507.89 Td
+/F1 11 Tf
+54.00 476.89 Td
+(O projeto usa:) Tj
+-54.00 -476.89 Td
+/F1 10.5 Tf
+64.00 454.89 Td
+(- imagens no carrossel;) Tj
+-64.00 -454.89 Td
+/F1 10.5 Tf
+64.00 439.89 Td
+(- imagem do icone wifi-protect.jpeg no cabecalho;) Tj
+-64.00 -439.89 Td
+/F1 10.5 Tf
+64.00 424.89 Td
+(- botoes;) Tj
+-64.00 -424.89 Td
+/F1 10.5 Tf
+64.00 409.89 Td
+(- campos de texto;) Tj
+-64.00 -409.89 Td
+/F1 10.5 Tf
+64.00 394.89 Td
+(- checkbox "Lembrar de mim";) Tj
+-64.00 -394.89 Td
+/F1 10.5 Tf
+64.00 379.89 Td
+(- cards de redes;) Tj
+-64.00 -379.89 Td
+/F1 10.5 Tf
+64.00 364.89 Td
+(- listagem de redes;) Tj
+-64.00 -364.89 Td
+/F1 10.5 Tf
+64.00 349.89 Td
+(- modal de aviso;) Tj
+-64.00 -349.89 Td
+/F1 10.5 Tf
+64.00 334.89 Td
+(- snackbar para mensagens;) Tj
+-64.00 -334.89 Td
+/F1 10.5 Tf
+64.00 319.89 Td
+(- icones de cadeado, Wi-Fi, favorito e conta.) Tj
+-64.00 -319.89 Td
+/F1 11 Tf
+54.00 298.89 Td
+(Explicacao para falar:) Tj
+-54.00 -298.89 Td
+/F1 11 Tf
+54.00 276.89 Td
+(A interface foi pensada para ser simples. O usuario consegue criar conta, entrar,) Tj
+-54.00 -276.89 Td
+/F1 11 Tf
+54.00 260.89 Td
+(visualizar redes, favoritar redes e receber avisos sem precisar entender termos) Tj
+-54.00 -260.89 Td
+/F1 11 Tf
+54.00 244.89 Td
+(tecnicos.) Tj
+-54.00 -244.89 Td
+/F2 15 Tf
+54.00 212.89 Td
+(13. Requisitos atendidos) Tj
+-54.00 -212.89 Td
+/F1 10.5 Tf
+64.00 181.89 Td
+(- Quatro telas: atendido, o app tem mais de quatro.) Tj
+-64.00 -181.89 Td
+/F1 10.5 Tf
+64.00 166.89 Td
+(- Controle de acesso: login, cadastro e logout.) Tj
+-64.00 -166.89 Td
+/F1 10.5 Tf
+64.00 151.89 Td
+(- Coleta de dados do usuario: nome, e-mail e senha.) Tj
+-64.00 -151.89 Td
+/F1 10.5 Tf
+64.00 136.89 Td
+(- Armazenamento no dispositivo: login salvo e redes favoritas.) Tj
+-64.00 -136.89 Td
+/F1 10.5 Tf
+64.00 121.89 Td
+(- Recurso nativo: varredura real de redes Wi-Fi pelo Android.) Tj
+-64.00 -121.89 Td
+/F1 10.5 Tf
+64.00 106.89 Td
+(- Componentes visuais: imagens, botoes, campos, checkbox, cards, modais e listagens.) Tj
+-64.00 -106.89 Td
+/F2 15 Tf
+54.00 75.89 Td
+(14. Diferenciais) Tj
+-54.00 -75.89 Td
+/F1 9 Tf
+54.00 28 Td
+(WiSafe / Wifi Protect - Defesa do projeto | Pagina 6 de 7) Tj
+ET
+endstream
+endobj
+17 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 16 0 R >>
+endobj
+18 0 obj
+<< /Length 1446 >>
+stream
+BT
+/F1 11 Tf
+54.00 787.89 Td
+(O projeto vai alem do minimo porque:) Tj
+-54.00 -787.89 Td
+/F1 10.5 Tf
+64.00 765.89 Td
+(- usa modulo nativo Android em Kotlin;) Tj
+-64.00 -765.89 Td
+/F1 10.5 Tf
+64.00 750.89 Td
+(- escaneia redes Wi-Fi reais;) Tj
+-64.00 -750.89 Td
+/F1 10.5 Tf
+64.00 735.89 Td
+(- classifica redes por nivel de risco;) Tj
+-64.00 -735.89 Td
+/F1 10.5 Tf
+64.00 720.89 Td
+(- mostra aviso antes de conexao insegura;) Tj
+-64.00 -720.89 Td
+/F1 10.5 Tf
+64.00 705.89 Td
+(- salva login e favoritos no dispositivo;) Tj
+-64.00 -705.89 Td
+/F1 10.5 Tf
+64.00 690.89 Td
+(- usa Firebase para autenticar e armazenar dados do usuario;) Tj
+-64.00 -690.89 Td
+/F1 10.5 Tf
+64.00 675.89 Td
+(- gera APK usando EAS.) Tj
+-64.00 -675.89 Td
+/F2 15 Tf
+54.00 644.89 Td
+(15. Fechamento) Tj
+-54.00 -644.89 Td
+/F1 11 Tf
+54.00 613.89 Td
+(Fala sugerida:) Tj
+-54.00 -613.89 Td
+/F1 11 Tf
+54.00 591.89 Td
+(O projeto atende aos requisitos obrigatorios e vai alem deles, porque transforma a) Tj
+-54.00 -591.89 Td
+/F1 11 Tf
+54.00 575.89 Td
+(proposta em um aplicativo funcional. Ele possui autenticacao, coleta de dados,) Tj
+-54.00 -575.89 Td
+/F1 11 Tf
+54.00 559.89 Td
+(armazenamento local, banco de dados externo, telas navegaveis e um recurso nativo) Tj
+-54.00 -559.89 Td
+/F1 11 Tf
+54.00 543.89 Td
+(Android para buscar redes Wi-Fi reais e avaliar o risco de seguranca.) Tj
+-54.00 -543.89 Td
+/F1 9 Tf
+54.00 28 Td
+(WiSafe / Wifi Protect - Defesa do projeto | Pagina 7 de 7) Tj
+ET
+endstream
+endobj
+19 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 18 0 R >>
+endobj
+xref
+0 20
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000156 00000 n 
+0000000226 00000 n 
+0000000301 00000 n 
+0000000369 00000 n 
+0000003785 00000 n 
+0000003937 00000 n 
+0000007195 00000 n 
+0000007347 00000 n 
+0000010562 00000 n 
+0000010716 00000 n 
+0000014037 00000 n 
+0000014191 00000 n 
+0000017409 00000 n 
+0000017563 00000 n 
+0000021026 00000 n 
+0000021180 00000 n 
+0000022679 00000 n 
+trailer
+<< /Size 20 /Root 1 0 R >>
+startxref
+22833
+%%EOF
