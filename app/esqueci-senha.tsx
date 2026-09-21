@@ -1,218 +1,122 @@
+import { AppHeader } from "@/src/components/AppHeader";
+import { auth } from "@/src/services/firebase";
 import { useRouter } from "expo-router";
+import { sendPasswordResetEmail } from "firebase/auth";
 import { useState } from "react";
-import { View } from "react-native";
+import { ScrollView, View } from "react-native";
 import { Button, Snackbar, Text, TextInput } from "react-native-paper";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
 export default function EsqueciSenha() {
   const router = useRouter();
-  const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
-  const [novaSenha, setNovaSenha] = useState("");
-  const [confirmarSenha, setConfirmarSenha] = useState("");
-  const [mostrarNovaSenha, setMostrarNovaSenha] = useState(false);
-  const [mostrarConfirmarSenha, setMostrarConfirmarSenha] = useState(false);
   const [visible, setVisible] = useState(false);
   const [snackMessage, setSnackMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleConfirmar() {
-    if (!nome || !email || !novaSenha || !confirmarSenha) {
-      setSnackMessage("Preencha todos os campos!");
+  async function handleConfirmar() {
+    if (!email.trim()) {
+      setSnackMessage("Informe seu e-mail.");
       setVisible(true);
       return;
     }
 
-    if (novaSenha !== confirmarSenha) {
-      setSnackMessage("As senhas não coincidem!");
+    try {
+      setLoading(true);
+      await sendPasswordResetEmail(auth, email.trim());
+      setSnackMessage("Email de redefinicao enviado com sucesso.");
       setVisible(true);
-      return;
+      setTimeout(() => {
+        router.replace("/login");
+      }, 2500);
+    } catch (error: any) {
+      console.log(error);
+
+      if (error.code === "auth/user-not-found") {
+        setSnackMessage("Nenhum usuario encontrado com esse email.");
+      } else if (error.code === "auth/invalid-email") {
+        setSnackMessage("Email invalido.");
+      } else {
+        setSnackMessage("Erro ao enviar email de redefinicao.");
+      }
+
+      setVisible(true);
+    } finally {
+      setLoading(false);
     }
-
-    setSnackMessage("Senha redefinida com sucesso!");
-    setVisible(true);
-    console.log("Redefinindo senha para:", { nome, email });
-
-    // Voltar para o login após 2.5 segundos
-    setTimeout(() => {
-      router.replace("/login");
-    }, 2500);
   }
 
   return (
-    <SafeAreaProvider style={{ backgroundColor: "#e8e8e8" }}>
-      <SafeAreaView style={{ flex: 1 }}>
-        {/* Header */}
-        <View
-          style={{
-            backgroundColor: "#1a2a4a",
-            paddingHorizontal: 16,
-            paddingVertical: 12,
-            flexDirection: "row",
-            alignItems: "center",
-            gap: 10,
-          }}
-        >
-          <View
-            style={{
-              width: 36,
-              height: 36,
-              borderRadius: 18,
-              backgroundColor: "#2a5298",
-              borderWidth: 2,
-              borderColor: "#4a90d9",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <Text style={{ fontSize: 16 }}>🛡️</Text>
-          </View>
-          <Text style={{ color: "#ffffff", fontSize: 20, fontWeight: "bold" }}>
-            Wifi-Protect
-          </Text>
-        </View>
+    <SafeAreaProvider>
+      <SafeAreaView style={{ flex: 1, backgroundColor: "#e8e8e8" }}>
+        <AppHeader />
 
-        {/* Conteúdo */}
-        <View
-          style={{
-            flex: 1,
-            justifyContent: "center",
-            alignItems: "center",
-            backgroundColor: "#e8e8e8",
+        <ScrollView
+          contentContainerStyle={{
+            paddingHorizontal: 18,
+            paddingTop: 28,
+            paddingBottom: 40,
           }}
         >
-          {/* Card */}
           <View
             style={{
-              backgroundColor: "#d4d4d4",
-              borderRadius: 10,
-              width: "82%",
+              backgroundColor: "#dcdcdc",
+              borderRadius: 12,
               overflow: "hidden",
             }}
           >
-            {/* Título */}
             <View
               style={{
-                backgroundColor: "#1a3a1a",
-                paddingVertical: 12,
+                backgroundColor: "#1a3a6b",
+                paddingVertical: 16,
                 alignItems: "center",
               }}
             >
-              <Text
-                style={{
-                  color: "#ffffff",
-                  fontSize: 16,
-                  fontWeight: "bold",
-                }}
-              >
-                Resete sua senha
+              <Text style={{ color: "#ffffff", fontSize: 24, fontWeight: "bold" }}>
+                Recuperar Senha
               </Text>
             </View>
 
-            {/* Campos */}
-            <View style={{ padding: 20, gap: 12 }}>
-              <View>
-                <Text style={{ fontSize: 13, marginBottom: 4, color: "#333" }}>
-                  Nome
-                </Text>
-                <TextInput
-                  placeholder="Digite seu nome"
-                  value={nome}
-                  onChangeText={(texto: string) => setNome(texto)}
-                  mode="outlined"
-                  style={{ backgroundColor: "#ffffff", height: 44 }}
-                  outlineStyle={{ borderColor: "#aaa" }}
-                  contentStyle={{ fontSize: 13 }}
-                />
-              </View>
+            <View style={{ padding: 18, gap: 16 }}>
+              <Text style={{ fontSize: 15, color: "#333", lineHeight: 22 }}>
+                Informe o email da sua conta. Voce recebera um link para redefinir sua senha.
+              </Text>
 
               <View>
-                <Text style={{ fontSize: 13, marginBottom: 4, color: "#333" }}>
-                  Email
-                </Text>
+                <Text style={{ fontSize: 15, marginBottom: 6, color: "#222" }}>Email</Text>
+
                 <TextInput
                   placeholder="Digite seu e-mail"
                   value={email}
-                  onChangeText={(texto: string) => setEmail(texto)}
+                  onChangeText={setEmail}
                   mode="outlined"
                   keyboardType="email-address"
                   autoCapitalize="none"
-                  style={{ backgroundColor: "#ffffff", height: 44 }}
-                  outlineStyle={{ borderColor: "#aaa" }}
-                  contentStyle={{ fontSize: 13 }}
-                />
-              </View>
-
-              <View>
-                <Text style={{ fontSize: 13, marginBottom: 4, color: "#333" }}>
-                  Nova senha
-                </Text>
-                <TextInput
-                  value={novaSenha}
-                  onChangeText={(texto: string) => setNovaSenha(texto)}
-                  mode="outlined"
-                  secureTextEntry={!mostrarNovaSenha}
-                  right={
-                    <TextInput.Affix
-                      text={mostrarNovaSenha ? "Hide" : "Show"}
-                      onPress={() => setMostrarNovaSenha(!mostrarNovaSenha)}
-                    />
-                  }
-                  style={{ backgroundColor: "#ffffff", height: 44 }}
-                  outlineStyle={{ borderColor: "#aaa" }}
-                  contentStyle={{ fontSize: 13 }}
-                />
-              </View>
-
-              <View>
-                <Text style={{ fontSize: 13, marginBottom: 4, color: "#333" }}>
-                  Confirmar senha
-                </Text>
-                <TextInput
-                  value={confirmarSenha}
-                  onChangeText={(texto: string) => setConfirmarSenha(texto)}
-                  mode="outlined"
-                  secureTextEntry={!mostrarConfirmarSenha}
-                  right={
-                    <TextInput.Affix
-                      text={mostrarConfirmarSenha ? "Hide" : "Show"}
-                      onPress={() =>
-                        setMostrarConfirmarSenha(!mostrarConfirmarSenha)
-                      }
-                    />
-                  }
-                  style={{ backgroundColor: "#ffffff", height: 44 }}
-                  outlineStyle={{ borderColor: "#aaa" }}
-                  contentStyle={{ fontSize: 13 }}
+                  style={{ backgroundColor: "#ffffff" }}
+                  outlineStyle={{ borderColor: "#b0b0b0" }}
                 />
               </View>
 
               <Button
                 mode="contained"
                 onPress={handleConfirmar}
+                loading={loading}
+                disabled={loading}
                 style={{
-                  backgroundColor: "#1a3a1a",
-                  borderRadius: 8,
-                  marginTop: 4,
-                  alignSelf: "center",
-                  paddingHorizontal: 16,
+                  backgroundColor: "#1a3a6b",
+                  borderRadius: 10,
+                  marginTop: 8,
+                  paddingVertical: 4,
                 }}
-                labelStyle={{ color: "#ffffff", fontSize: 15 }}
+                labelStyle={{ color: "#ffffff", fontSize: 18, fontWeight: "bold" }}
               >
-                Confirmar
+                Enviar Email
               </Button>
             </View>
           </View>
-        </View>
+        </ScrollView>
 
-        <Snackbar
-          visible={visible}
-          onDismiss={() => setVisible(false)}
-          duration={2500}
-          action={{
-            label: "Fechar",
-            onPress: () => console.log("Snack fechado"),
-          }}
-        >
+        <Snackbar visible={visible} onDismiss={() => setVisible(false)} duration={3000}>
           {snackMessage}
         </Snackbar>
       </SafeAreaView>
